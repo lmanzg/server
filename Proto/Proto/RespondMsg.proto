@@ -1,0 +1,10 @@
+syntax = "proto3";
+package respondMsg;
+message RespondMsg
+{
+    int32 rv = 1; // 返回值
+    int32 seckeyid = 2; 		// 对称密钥编号 keysn
+    string clientId = 3; 	// 客户端编号
+    string serverId = 4; 	// 服务器编号
+    string data = 5; 	// 服务器端随机数
+}
