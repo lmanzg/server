@@ -9,7 +9,15 @@ Codec::~Codec()
 {
 }
 
+string Codec::encodeMsg()
+{
+	return string();
+}
 
+void * Codec::decodeMsg()
+{
+	return nullptr;
+}
 
 //RequestÀàÊµÏÖ
 Request::Request()
@@ -18,16 +26,12 @@ Request::Request()
 
 Request::Request(string encstr)
 {
-	this->m_encStr = encstr;
+	initMessage(encstr);
 }
 
 Request::Request(int cmd, string clientID, string seckeyID, string sign, string data)
 {
-	this->m_msg.set_cmdtype(cmd);
-	this->m_msg.set_clientid(clientID);
-	this->m_msg.set_serverid(seckeyID);
-	this->m_msg.set_sign(sign);
-	this->m_msg.set_data(data);
+	initMessage(cmd, clientID, seckeyID, sign, data);
 }
 
 void Request::initMessage(string encstr)
@@ -68,16 +72,12 @@ Response::Response()
 
 Response::Response(string encstr)
 {
-	this->m_encStr = encstr;
+	initMessage(encstr);
 }
 
 Response::Response(int status, int seckeyID, string clientID, string serverID, string data)
 {
-	this->m_msg.set_rv(status);
-	this->m_msg.set_seckeyid(seckeyID);
-	this->m_msg.set_clientid(clientID);
-	this->m_msg.set_serverid(serverID);
-	this->m_msg.set_data(data);
+	initMessage(status, seckeyID, clientID, serverID, data);
 }
 
 void Response::initMessage(string encstr)

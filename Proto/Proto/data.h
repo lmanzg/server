@@ -14,9 +14,9 @@ class Codec
 {
 public:
 	Codec();
-	~Codec();
-	string encodeMsg;
-	void *decodeMsg;
+	virtual ~Codec();
+	virtual string encodeMsg();
+	virtual void *decodeMsg();
 };
 
 class Request : public Codec
