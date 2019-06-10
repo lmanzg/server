@@ -1,14 +1,22 @@
 #include<stdio.h>
 #include "data.h"
+#include "Request.h"
+#include "Response.h"
 
 void main()
 {
 	Request request;
 	RequestMsg *pRequest;
 	string output;
+	Requestinfo info;
+	info.cmd = 1;
+	info.clientID = "13854188";
+	info.seckeyID = "10086";
+	info.sign = "hello";
+	info.data = "world";
 
 	//≥ı ºªØ
-	request.initMessage(1, "13854188", "10086", "hello" ,"world");
+	request.initMessage(&info);
 	
 	pRequest = (RequestMsg *)request.decodeMsg();
 
